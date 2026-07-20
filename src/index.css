@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-abyss: #060608;
+  --color-ember: #e50914;
+  --font-display: "Inter", system-ui, sans-serif;
+}
+
+body {
+  @apply bg-abyss text-white antialiased;
+  font-family: var(--font-display);
+}
