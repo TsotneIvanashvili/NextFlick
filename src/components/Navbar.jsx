@@ -111,7 +111,7 @@ export default function Navbar() {
               />
               <span
                 className={`absolute h-px w-4 bg-white transition-transform duration-500 ease-fluid ${
-                  open ? '-rotate-45' : 'translate-y-[3px]'
+                  open ? '-rotate-45' : 'translate-y-0.75'
                 }`}
               />
             </button>
