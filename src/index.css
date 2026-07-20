@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-abyss: #060608;
+  --color-abyss: #050505;
+  --color-onyx: #0c0c10;
   --color-ember: #e50914;
-  --font-display: "Inter", system-ui, sans-serif;
+  --color-gold: #f5c518;
+  --font-display: "Clash Display", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --ease-fluid: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 body {
-  @apply bg-abyss text-white antialiased;
-  font-family: var(--font-display);
+  @apply bg-abyss font-sans text-white antialiased;
+}
+
+::selection {
+  @apply bg-ember text-white;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
