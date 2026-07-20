@@ -40,9 +40,9 @@ export default function Watchlist() {
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.15, ease }}
-            className="mt-16 rounded-[2rem] bg-white/5 p-2 ring-1 ring-white/10"
+            className="mt-16 rounded-4xl bg-white/5 p-2 ring-1 ring-white/10"
           >
-            <div className="flex flex-col items-center gap-6 rounded-[calc(2rem-0.5rem)] bg-onyx px-8 py-24 text-center">
+            <div className="flex flex-col items-center gap-6 rounded-3xl bg-onyx px-8 py-24 text-center">
               <span className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/30">
                 <FilmIcon className="h-6 w-6" />
               </span>

@@ -26,3 +26,13 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}

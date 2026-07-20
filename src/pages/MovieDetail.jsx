@@ -87,8 +87,8 @@ export default function MovieDetail() {
               transition={{ duration: 0.9, ease }}
               className="w-48 shrink-0 md:w-64"
             >
-              <div className="rounded-[2rem] bg-white/5 p-2 ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-                <div className="aspect-[2/3] overflow-hidden rounded-[calc(2rem-0.5rem)] bg-onyx">
+              <div className="rounded-4xl bg-white/5 p-2 ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+                <div className="aspect-[2/3] overflow-hidden rounded-3xl bg-onyx">
                   {movie.poster_path ? (
                     <img src={img.poster(movie.poster_path)} alt={movie.title} className="h-full w-full object-cover" />
                   ) : (

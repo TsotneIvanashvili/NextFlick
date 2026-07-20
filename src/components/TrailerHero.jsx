@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { tmdb, img, pickTrailer } from '../lib/tmdb.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useWatchlist } from '../context/WatchlistContext.jsx'
+import { useUI } from '../context/UIContext.jsx'
 import {
   ArrowUpRightIcon,
   BookmarkIcon,
@@ -18,7 +19,7 @@ export default function TrailerHero() {
   const [movies, setMovies] = useState([])
   const [index, setIndex] = useState(0)
   const [trailers, setTrailers] = useState({})
-  const [muted, setMuted] = useState(true)
+  const { muted, setMuted } = useUI()
   const { user } = useAuth()
   const { has, toggle } = useWatchlist()
   const navigate = useNavigate()
@@ -36,21 +37,22 @@ export default function TrailerHero() {
       .catch(() => {})
   }, [])
 
-  const movie = movies[index]
-
   useEffect(() => {
-    if (!movie || trailers[movie.id] !== undefined) return
-    tmdb
-      .videos(movie.id)
-      .then((d) => setTrailers((prev) => ({ ...prev, [movie.id]: pickTrailer(d)?.key ?? null })))
-      .catch(() => setTrailers((prev) => ({ ...prev, [movie.id]: null })))
-  }, [movie, trailers])
+    movies.forEach((m) => {
+      tmdb
+        .videos(m.id)
+        .then((d) => setTrailers((prev) => ({ ...prev, [m.id]: pickTrailer(d)?.key ?? null })))
+        .catch(() => setTrailers((prev) => ({ ...prev, [m.id]: null })))
+    })
+  }, [movies])
 
   useEffect(() => {
     if (movies.length < 2) return
     const timer = setTimeout(() => setIndex((i) => (i + 1) % movies.length), 30000)
     return () => clearTimeout(timer)
   }, [index, movies])
+
+  const movie = movies[index]
 
   if (!movie) {
     return (
@@ -90,10 +92,10 @@ export default function TrailerHero() {
             />
             {trailerKey && (
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&mute=${muted ? 1 : 0}&controls=0&loop=1&playlist=${trailerKey}&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&disablekb=1`}
+                src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&mute=${muted ? 1 : 0}&controls=0&loop=1&playlist=${trailerKey}&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&cc_load_policy=0`}
                 title={movie.title}
                 allow="autoplay; encrypted-media"
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[max(100vh,56.25vw)] w-[max(100vw,177.78vh)] -translate-x-1/2 -translate-y-1/2 scale-125"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[max(100vh,56.25vw)] w-[max(100vw,177.78vh)] -translate-x-1/2 -translate-y-1/2 scale-[1.45]"
               />
             )}
           </motion.div>
@@ -174,7 +176,7 @@ export default function TrailerHero() {
           ))}
         </div>
         <button
-          onClick={() => setMuted((m) => !m)}
+          onClick={() => setMuted(!muted)}
           aria-label={muted ? 'Unmute trailer' : 'Mute trailer'}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white/80 backdrop-blur-xl transition-colors duration-500 ease-fluid hover:bg-white/15 hover:text-white active:scale-[0.94]"
         >

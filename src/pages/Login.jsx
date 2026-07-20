@@ -35,9 +35,9 @@ export default function Login() {
         initial={{ opacity: 0, y: 40, filter: 'blur(8px)' }}
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.9, ease }}
-        className="relative z-10 w-full max-w-md rounded-[2rem] bg-white/5 p-2 ring-1 ring-white/10"
+        className="relative z-10 w-full max-w-md rounded-4xl bg-white/5 p-2 ring-1 ring-white/10"
       >
-        <div className="rounded-[calc(2rem-0.5rem)] bg-onyx px-8 py-12 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
+        <div className="rounded-3xl bg-onyx px-8 py-12 shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
           <span className="inline-block rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.25em] text-white/50">
             Welcome back
           </span>
