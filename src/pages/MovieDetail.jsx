@@ -33,7 +33,7 @@ export default function MovieDetail() {
 
   if (error) {
     return (
-      <Page className="flex min-h-[100dvh] flex-col items-center justify-center gap-4 px-6">
+      <Page className="flex min-h-dvh flex-col items-center justify-center gap-4 px-6">
         <h1 className="font-display text-3xl font-semibold">Something went wrong</h1>
         <p className="text-sm text-white/40">We couldn't load this movie.</p>
       </Page>
@@ -42,7 +42,7 @@ export default function MovieDetail() {
 
   if (!movie) {
     return (
-      <Page className="flex min-h-[100dvh] items-center justify-center">
+      <Page className="flex min-h-dvh items-center justify-center">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-ember" />
       </Page>
     )
@@ -88,7 +88,7 @@ export default function MovieDetail() {
               className="w-48 shrink-0 md:w-64"
             >
               <div className="rounded-4xl bg-white/5 p-2 ring-1 ring-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
-                <div className="aspect-[2/3] overflow-hidden rounded-3xl bg-onyx">
+                <div className="aspect-2/3 overflow-hidden rounded-3xl bg-onyx">
                   {movie.poster_path ? (
                     <img src={img.poster(movie.poster_path)} alt={movie.title} className="h-full w-full object-cover" />
                   ) : (
@@ -185,11 +185,11 @@ export default function MovieDetail() {
                   <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">Cast</h2>
                 </div>
               </div>
-              <div className="no-scrollbar mx-auto flex max-w-6xl snap-x gap-4 overflow-x-auto px-6 pb-2 md:px-12">
+              <div className="no-scrollbar mx-auto flex max-w-6xl gap-4 overflow-x-auto overscroll-x-contain px-6 pb-2 md:px-12">
                 {cast.map((c) => (
-                  <div key={c.id} className="w-28 shrink-0 snap-start md:w-32">
+                  <div key={c.id} className="w-28 shrink-0 md:w-32">
                     <div className="rounded-2xl bg-white/5 p-1.5 ring-1 ring-white/10">
-                      <div className="aspect-[3/4] overflow-hidden rounded-[calc(1rem-0.125rem)] bg-onyx">
+                      <div className="aspect-3/4 overflow-hidden rounded-[0.875rem] bg-onyx">
                         {c.profile_path ? (
                           <img
                             src={img.profile(c.profile_path)}

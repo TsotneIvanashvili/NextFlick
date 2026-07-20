@@ -4,7 +4,7 @@ import { ArrowUpRightIcon } from '../components/icons.jsx'
 
 export default function NotFound() {
   return (
-    <Page className="flex min-h-[100dvh] flex-col items-center justify-center gap-6 px-6 text-center">
+    <Page className="flex min-h-dvh flex-col items-center justify-center gap-6 px-6 text-center">
       <p className="font-display text-8xl font-semibold text-white/10">404</p>
       <h1 className="font-display text-3xl font-semibold tracking-tight">Scene not found</h1>
       <p className="max-w-sm text-sm leading-relaxed text-white/40">

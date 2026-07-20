@@ -29,7 +29,7 @@ export default function Signup() {
   }
 
   return (
-    <Page className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 py-28">
+    <Page className="relative flex min-h-dvh items-center justify-center overflow-hidden px-4 py-28">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/2 h-120 w-240 -translate-x-1/2 rounded-full bg-ember/15 blur-[160px]" />
         <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-emerald-500/8 blur-[120px]" />

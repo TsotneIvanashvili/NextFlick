@@ -46,7 +46,7 @@ export default function MovieRow({ title, eyebrow, movies }) {
       </Reveal>
       <div
         ref={trackRef}
-        className="no-scrollbar flex snap-x gap-4 overflow-x-auto px-6 pb-2 md:px-12"
+        className="no-scrollbar flex gap-4 overflow-x-auto overscroll-x-contain px-6 pb-2 md:px-12"
       >
         {movies.map((m, i) => (
           <motion.div
@@ -55,9 +55,9 @@ export default function MovieRow({ title, eyebrow, movies }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.65, delay: Math.min(i * 0.05, 0.45), ease }}
-            className="shrink-0 snap-start"
+            className="w-40 shrink-0 md:w-48"
           >
-            <MovieCard movie={m} />
+            <MovieCard movie={m} width="w-full" />
           </motion.div>
         ))}
       </div>

@@ -5,6 +5,7 @@ import { tmdb, img, pickTrailer } from '../lib/tmdb.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useWatchlist } from '../context/WatchlistContext.jsx'
 import { useUI } from '../context/UIContext.jsx'
+import TrailerFrame from './TrailerFrame.jsx'
 import {
   ArrowUpRightIcon,
   BookmarkIcon,
@@ -56,7 +57,7 @@ export default function TrailerHero() {
 
   if (!movie) {
     return (
-      <div className="flex min-h-[100dvh] items-center justify-center">
+      <div className="flex min-h-dvh items-center justify-center">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-white/10 border-t-ember" />
       </div>
     )
@@ -74,7 +75,7 @@ export default function TrailerHero() {
   }
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden">
+    <section className="relative min-h-dvh overflow-hidden">
       <div className="absolute inset-0">
         <AnimatePresence>
           <motion.div
@@ -90,14 +91,12 @@ export default function TrailerHero() {
               alt=""
               className="h-full w-full scale-105 object-cover"
             />
-            {trailerKey && (
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&mute=${muted ? 1 : 0}&controls=0&loop=1&playlist=${trailerKey}&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&disablekb=1&fs=0&cc_load_policy=0`}
-                title={movie.title}
-                allow="autoplay; encrypted-media"
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[max(100vh,56.25vw)] w-[max(100vw,177.78vh)] -translate-x-1/2 -translate-y-1/2 scale-[1.45]"
-              />
-            )}
+            <TrailerFrame
+              trailerKey={trailerKey}
+              title={movie.title}
+              muted={muted}
+              className="absolute left-1/2 top-1/2 h-[max(100vh,56.25vw)] w-[max(100vw,177.78vh)] -translate-x-1/2 -translate-y-1/2 scale-[1.45]"
+            />
           </motion.div>
         </AnimatePresence>
         <div className="absolute inset-0 bg-linear-to-r from-abyss/95 via-abyss/30 to-transparent" />
@@ -105,7 +104,7 @@ export default function TrailerHero() {
         <div className="absolute inset-x-0 bottom-0 h-64 bg-linear-to-t from-abyss via-abyss/60 to-transparent" />
       </div>
 
-      <div className="relative z-10 flex min-h-[100dvh] items-end">
+      <div className="relative z-10 flex min-h-dvh items-end">
         <div className="w-full px-6 pb-28 md:px-12 md:pb-32">
           <AnimatePresence mode="wait">
             <motion.div

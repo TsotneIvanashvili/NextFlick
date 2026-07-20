@@ -15,7 +15,7 @@ export default function Watchlist() {
   if (!user) return <Navigate to="/login" replace />
 
   return (
-    <Page className="min-h-[100dvh] px-6 pb-32 pt-36 md:px-12 md:pt-44">
+    <Page className="min-h-dvh px-6 pb-32 pt-36 md:px-12 md:pt-44">
       <div className="mx-auto max-w-6xl">
         <motion.div
           initial={{ opacity: 0, y: 32 }}

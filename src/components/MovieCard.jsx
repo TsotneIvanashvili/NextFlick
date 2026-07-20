@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext.jsx'
 import { useWatchlist } from '../context/WatchlistContext.jsx'
 import { BookmarkIcon, StarIcon } from './icons.jsx'
 
-export default function MovieCard({ movie, width = 'w-40 md:w-48' }) {
+export default function MovieCard({ movie, width = 'w-full' }) {
   const { user } = useAuth()
   const { has, toggle } = useWatchlist()
   const navigate = useNavigate()
@@ -23,9 +23,9 @@ export default function MovieCard({ movie, width = 'w-40 md:w-48' }) {
   }
 
   return (
-    <Link to={`/movie/${movie.id}`} className={`group relative shrink-0 snap-start ${width}`}>
+    <Link to={`/movie/${movie.id}`} className={`group relative block ${width}`}>
       <div className="rounded-2xl bg-white/5 p-1.5 ring-1 ring-white/10 transition-transform duration-500 ease-fluid group-hover:-translate-y-2">
-        <div className="relative aspect-[2/3] overflow-hidden rounded-[calc(1rem-0.125rem)] bg-onyx">
+        <div className="relative aspect-2/3 overflow-hidden rounded-[0.875rem] bg-onyx">
           {movie.poster_path ? (
             <img
               src={img.poster(movie.poster_path)}

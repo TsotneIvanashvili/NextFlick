@@ -5,6 +5,8 @@ import MovieRow from '../components/MovieRow.jsx'
 import Top10Row from '../components/Top10Row.jsx'
 import Marquee from '../components/Marquee.jsx'
 import Spotlight from '../components/Spotlight.jsx'
+import TrailerTheatre from '../components/TrailerTheatre.jsx'
+import TrailerWall from '../components/TrailerWall.jsx'
 import { tmdb } from '../lib/tmdb.js'
 
 const sections = [
@@ -12,10 +14,6 @@ const sections = [
   { key: 'nowPlaying', fetch: () => tmdb.nowPlaying() },
   { key: 'topRated', fetch: () => tmdb.topRated() },
   { key: 'upcoming', fetch: () => tmdb.upcoming() },
-  { key: 'action', fetch: () => tmdb.byGenre(28) },
-  { key: 'scifi', fetch: () => tmdb.byGenre(878) },
-  { key: 'animation', fetch: () => tmdb.byGenre(16) },
-  { key: 'horror', fetch: () => tmdb.byGenre(27) },
 ]
 
 export default function Home() {
@@ -38,16 +36,12 @@ export default function Home() {
     <Page>
       <TrailerHero />
       <Marquee />
-      <div className="space-y-24 py-24 md:space-y-32">
+      <div className="space-y-28 py-24 md:space-y-40">
         <Top10Row movies={rows.trending} />
-        <MovieRow title="In Theatres Now" eyebrow="On the big screen" movies={rows.nowPlaying} />
-        <MovieRow title="Critically Adored" eyebrow="All-time greats" movies={rows.topRated} />
+        <TrailerTheatre movies={rows.nowPlaying} />
+        <TrailerWall movies={rows.upcoming} />
         <Spotlight movie={spotlight} />
-        <MovieRow title="Coming Soon" eyebrow="Mark your calendar" movies={rows.upcoming} />
-        <MovieRow title="Adrenaline Rush" eyebrow="Action" movies={rows.action} />
-        <MovieRow title="Other Worlds" eyebrow="Sci-fi" movies={rows.scifi} />
-        <MovieRow title="Animated Wonders" eyebrow="Animation" movies={rows.animation} />
-        <MovieRow title="After Midnight" eyebrow="Horror" movies={rows.horror} />
+        <MovieRow title="Critically Adored" eyebrow="All-time greats" movies={rows.topRated} />
       </div>
     </Page>
   )
