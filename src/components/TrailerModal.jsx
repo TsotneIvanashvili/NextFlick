@@ -26,7 +26,7 @@ export default function TrailerModal({ trailerKey, title, onClose }) {
             <div className="overflow-hidden rounded-3xl bg-black">
               <div className="aspect-video w-full">
                 <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&rel=0`}
+                  src={`https://www.youtube-nocookie.com/embed/${trailerKey}?autoplay=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&disablekb=1`}
                   title={title}
                   allow="autoplay; encrypted-media; fullscreen"
                   allowFullScreen

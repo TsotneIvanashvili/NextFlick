@@ -15,6 +15,8 @@ export default function TrailerFrame({ trailerKey, title, muted = true, classNam
   }
 
   useEffect(() => {
+    // trailerKey often arrives after mount; the box only exists once it does,
+    // so the observer must re-attach when the key changes.
     const el = boxRef.current
     if (!el) return
     const io = new IntersectionObserver(
@@ -23,7 +25,7 @@ export default function TrailerFrame({ trailerKey, title, muted = true, classNam
     )
     io.observe(el)
     return () => io.disconnect()
-  }, [])
+  }, [trailerKey])
 
   useEffect(() => {
     if (!inView) {
@@ -54,6 +56,14 @@ export default function TrailerFrame({ trailerKey, title, muted = true, classNam
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
   }, [loaded, trailerKey])
+
+  useEffect(() => {
+    // autoplay=1 is not always honored for embeds; nudge playback once the
+    // widget has had a moment to register the 'listening' handshake.
+    if (!loaded) return
+    const timer = setTimeout(() => send('playVideo'), 500)
+    return () => clearTimeout(timer)
+  }, [loaded])
 
   useEffect(() => {
     if (!loaded || muted === appliedRef.current) return

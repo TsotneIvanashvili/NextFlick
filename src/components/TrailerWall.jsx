@@ -66,7 +66,7 @@ export default function TrailerWall({ movies }) {
                     <TrailerFrame
                       trailerKey={keys[m.id]}
                       title={m.title}
-                      className="absolute inset-0 h-full w-full scale-[1.4]"
+                      className="absolute inset-0 h-full w-full scale-[1.7] md:scale-[1.4]"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-black/75 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-5 z-10">
